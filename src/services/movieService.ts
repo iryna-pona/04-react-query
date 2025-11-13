@@ -1,21 +1,15 @@
 import axios from "axios";
-import type { Movie } from "../types/movie";
+import type { MovieResponse } from "../types/movie"
 
-interface TMDBResponse {
-  results: Movie[];
-  page: number;
-  total_pages: number;
-  total_results: number;
-}
 
-export default async function fetchMovies(query: string, page = 1): Promise<TMDBResponse> {
+export default async function fetchMovies(query: string, page: number = 1): Promise<MovieResponse> {
     const token = import.meta.env.VITE_TMDB_TOKEN;
 
     if (!token) {
       throw new Error("VITE_TMDB_TOKEN is not defined in environment variables");
     }
 
-    const response = await axios.get<TMDBResponse>(
+    const response = await axios.get<MovieResponse>(
     "https://api.themoviedb.org/3/search/movie",
     {
       params: {
