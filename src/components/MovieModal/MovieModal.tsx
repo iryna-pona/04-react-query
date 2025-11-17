@@ -3,13 +3,13 @@ import { useEffect, type MouseEvent } from "react";
 import type { Movie } from "../../types/movie";
 import css from "./MovieModal.module.css";
 
-interface ModalProps {
+interface MovieModalProps {
   movie: Movie;
   onClose: () => void;
 }
 
-export default function Modal({ movie, onClose }: ModalProps) {
-  const { title, overview, release_date, vote_average, poster_path } = movie;
+export default function MovieModal({ movie, onClose }: MovieModalProps) {
+  const { title, overview, release_date, vote_average, backdrop_path } = movie;
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -50,7 +50,7 @@ export default function Modal({ movie, onClose }: ModalProps) {
           ×
         </button>
         <img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          src={`https://image.tmdb.org/t/p/w780${backdrop_path}`}
           className={css.image}
           alt={movie.title}
         />
