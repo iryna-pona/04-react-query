@@ -32,10 +32,11 @@ export default function App() {
 
 
   useEffect(() => {
-    if (data && data.results.length === 0 && query) {
+    if (!isLoading && !isError && data && data.results.length === 0 && query) {
       toast("No movies found for your request.");
     }
-  }, [data, query]);
+  }, [data, query, isLoading, isError]);
+
 
   const handleSearch = (newQuery: string) => {
     setQuery(newQuery);
