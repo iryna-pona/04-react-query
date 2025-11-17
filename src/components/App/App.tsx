@@ -22,12 +22,6 @@ export default function App() {
     queryKey: ["movies", query, page],
     queryFn: () => fetchMovies(query, page),
     enabled: query.length > 0,
-    placeholderData: {
-      results: [],
-      page: 1,
-      total_pages: 1,
-      total_results: 0,
-    } as MovieResponse,
   });
 
 
